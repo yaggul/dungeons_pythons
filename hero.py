@@ -1,3 +1,7 @@
+from weapon import Weapon
+from spell import Spell
+
+
 class Hero:
     def __init__(self, name= None, title= None, health= 100, mana= 100, mana_regeneration_rate= 2):
         self.name = name
@@ -6,6 +10,8 @@ class Hero:
         self.maximum_health = self.health
         self.mana = mana
         self.mana_regeneration_rate = mana_regeneration_rate
+        self.weapon = None
+        self.spell = None
 
     def known_as(self):
         return "{} the {}".format(self.name, self.title)
@@ -37,3 +43,8 @@ class Hero:
             self.health += healing_points
         return True
 
+    def equip(self, weapon):
+        self.weapon = weapon
+
+    def learn(self, spell):
+        self.spell = spell

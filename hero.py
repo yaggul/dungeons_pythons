@@ -1,10 +1,11 @@
 class Hero:
-    def __init__(self, name= None, title= None, health= 100, mana= 100, regeneration_rate= 2):
+    def __init__(self, name= None, title= None, health= 100, mana= 100, mana_regeneration_rate= 2):
         self.name = name
         self.title = title
         self.health = health
+        self.maximum_health = self.health
         self.mana = mana
-        self.regeneration_rate = regeneration_rate
+        self.mana_regeneration_rate = mana_regeneration_rate
 
     def known_as(self):
         return "{} the {}".format(self.name, self.title)
@@ -20,3 +21,19 @@ class Hero:
 
     def can_cast(self):
         return self.mana > 0
+
+    def take_damage(self, damage_points):
+        if self.health < damage_points:
+            self.health = 0
+        else:
+            self.health -= damage_points
+
+    def take_healing(self, healing_points):
+        if not self.is_alive():
+            return False
+        if self.health + healing_points > self.maximum_health:
+            self.health = self.maximum_health
+        else:
+            self.health += healing_points
+        return True
+

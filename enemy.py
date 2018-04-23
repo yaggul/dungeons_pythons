@@ -33,10 +33,11 @@ class Enemy:
         if mana_potion:
             if self.mana + mana_potion > 100:
                 self.mana = 100
-            else self.mana += mana_potion
+            else:
+                self.mana += mana_potion
 
     def attack(self):
         return self.damage
 
-    def take_damage(damage):
+    def take_damage(self, damage):
         self.damage += damage

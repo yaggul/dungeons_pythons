@@ -53,8 +53,6 @@ class Dungeon:
             return True
 
     def move_hero(self, direction):
-        xDirections = [0, 0, -1, 1]
-        yDirections = [-1, 1, 0, 0]
         rows = len(self.matrix)
         cols = len(self.matrix[0])
 
@@ -66,28 +64,28 @@ class Dungeon:
                     curr_position_row = self.matrix[i]
                     curr_position_col = self.matrix[j]
 
-                    if direction == 'left':
+                    if direction == 'up':
                         if self.valid_position(i - 1, j):
                             self.matrix[i - 1][j] = 'H'
                             self.matrix[i][j] = '.'
                             return True
                         else:
                             return False
-                    elif direction == 'right':
+                    elif direction == 'down':
                         if self.valid_position(i + 1, j):
                             self.matrix[i + 1][j] = 'H'
                             self.matrix[i][j] = '.'
                             return True
                         else:
                             return False
-                    if direction == 'up':
+                    if direction == 'right':
                         if self.valid_position(i, j + 1):
                             self.matrix[i][j + 1] = 'H'
                             self.matrix[i][j] = '.'
                             return True
                         else:
                             return False
-                    elif direction == 'down':
+                    elif direction == 'left':
                         if self.valid_position(i, j - 1):
                             self.matrix[i][j - 1] = 'H'
                             self.matrix[i][j] = '.'

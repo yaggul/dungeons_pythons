@@ -68,59 +68,29 @@ class Dungeon:
 
                     if direction == 'left':
                         if self.valid_position(i - 1, j):
-                            if self.matrix[i][j] is '.':
-                                self.matrix[i - 1][j] = 'H'
-                                self.matrix[i][j] = '.'
-                                return True
-                            if self.matrix[i][j] == 'E':
-                                pass
-                                # TODOself.hero.Fight()
-                            if self.matrix[i][j] == 'T':
-                                # TODOhero.Treasure
-                                pass
+                            self.matrix[i - 1][j] = 'H'
+                            self.matrix[i][j] = '.'
+                            return True
                         else:
                             return False
                     elif direction == 'right':
                         if self.valid_position(i + 1, j):
-                            if self.matrix[i][j] is '.':
-                                self.matrix[i + 1][j] = 'H'
-                                self.matrix[i][j] = '.'
-                                return True
-                            elif self.matrix[i][j] == 'E':
-                                # TODO self.hero.Fight()
-                                pass
-                            elif self.matrix[i][j] == 'T':
-                                # TODO hero.Treasure
-                                pass
+                            self.matrix[i + 1][j] = 'H'
+                            self.matrix[i][j] = '.'
+                            return True
                         else:
                             return False
                     if direction == 'up':
                         if self.valid_position(i, j + 1):
-                            if self.valid_position(i + 1, j):
-                                if self.matrix[i][j] is '.':
-                                    self.matrix[i][j + 1] = 'H'
-                                    self.matrix[i][j] = '.'
-                                    return True
-                                elif self.matrix[i][j] == 'E':
-                                    # TODOself.hero.Fight()
-                                    pass
-                                elif self.matrix[i][j] == 'T':
-                                    # TODO hero.Treasure
-                                    pass
+                            self.matrix[i][j + 1] = 'H'
+                            self.matrix[i][j] = '.'
+                            return True
                         else:
                             return False
                     elif direction == 'down':
                         if self.valid_position(i, j - 1):
-                            if self.valid_position(i + 1, j):
-                                if self.matrix[i][j] is '.':
-                                    self.matrix[i][j - 1] = 'H'
-                                    self.matrix[i][j] = '.'
-                                    return True
-                                elif self.matrix[i][j] == 'E':
-                                    # TODOself.hero.Fight()
-                                    pass
-                                elif self.matrix[i][j] == 'T':
-                                    # TODO hero.Treasure
-                                    pass
+                            self.matrix[i][j - 1] = 'H'
+                            self.matrix[i][j] = '.'
+                            
                         else:
                             return False

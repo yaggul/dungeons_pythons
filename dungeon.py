@@ -61,11 +61,10 @@ class Dungeon:
         for i in range(rows):
             for j in range(cols):
                 if self.matrix[i][j] == 'H':
-
                     if direction == 'left':
-                        if self.valid_position(i - 1, j):
-                            if self.matrix[i][j] is '.':
-                                self.matrix[i - 1][j] = 'H'
+                        if self.valid_position(i, j - 1):
+                            if self.matrix[i][j - 1] is '.':
+                                self.matrix[i][j - 1] = 'H'
                                 self.matrix[i][j] = '.'
                                 return True
                             if self.matrix[i][j] == 'E':
@@ -77,9 +76,9 @@ class Dungeon:
                         else:
                             return False
                     elif direction == 'right':
-                        if self.valid_position(i + 1, j):
-                            if self.matrix[i][j] is '.':
-                                self.matrix[i + 1][j] = 'H'
+                        if self.valid_position(i, j + 1):
+                            if self.matrix[i][j + 1] is '.':
+                                self.matrix[i][j + 1] = 'H'
                                 self.matrix[i][j] = '.'
                                 return True
                             elif self.matrix[i][j] == 'E':
@@ -91,31 +90,29 @@ class Dungeon:
                         else:
                             return False
                     if direction == 'up':
-                        if self.valid_position(i, j + 1):
-                            if self.valid_position(i + 1, j):
-                                if self.matrix[i][j] is '.':
-                                    self.matrix[i][j + 1] = 'H'
-                                    self.matrix[i][j] = '.'
-                                    return True
-                                elif self.matrix[i][j] == 'E':
-                                    # TODOself.hero.Fight()
-                                    pass
-                                elif self.matrix[i][j] == 'T':
-                                    # TODO hero.Treasure
-                                    pass
+                        if self.valid_position(i - 1,j):
+                            if self.matrix[i - 1][j] is '.':
+                                self.matrix[i - 1][j] = 'H'
+                                self.matrix[i][j] = '.'
+                                return True
+                            elif self.matrix[i][j] == 'E':
+                                # TODOself.hero.Fight()
+                                pass
+                            elif self.matrix[i][j] == 'T':
+                                # TODO hero.Treasure
+                                pass
                         else:
                             return False
                     elif direction == 'down':
-                        if self.valid_position(i, j - 1):
-                            if self.valid_position(i + 1, j):
-                                if self.matrix[i][j] is '.':
-                                    self.matrix[i][j - 1] = 'H'
-                                    self.matrix[i][j] = '.'
-                                    return True
-                                elif self.matrix[i][j] == 'E':
+                        if self.valid_position(i + 1, j):
+                            if self.matrix[i + 1][j] is '.':
+                                self.matrix[i + 1][j] = 'H'
+                                self.matrix[i][j] = '.'
+                                return True
+                            elif self.matrix[i][j] == 'E':
                                     # TODOself.hero.Fight()
-                                    pass
-                                elif self.matrix[i][j] == 'T':
+                                pass
+                            elif self.matrix[i][j] == 'T':
                                     # TODO hero.Treasure
                                     pass
                         else:

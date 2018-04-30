@@ -1,6 +1,7 @@
 from hero import Hero
 # from enemy import enemy
 from random import choice
+from fight import Fight
 
 h = Hero(name="Bron", title="Dragonslayer", health=10, mana=10, mana_regeneration_rate=2)
 
@@ -61,6 +62,9 @@ class Dungeon:
         else:
             return True
 
+    def hero_atack(by=None):
+        pass
+
     def move_hero(self, direction):
         rows = len(self.matrix)
         cols = len(self.matrix[0])
@@ -81,6 +85,7 @@ class Dungeon:
                                 pass
                                 # TODOself.hero.Fight()
                             if self.matrix[i][j] == 'T':
+                                print('Found treasure!')
                                 self.matrix[i][j - 1] = 'H'
                                 self.matrix[i][j] = '.'
                                 hero_treasure = self.pick_treasure()
@@ -101,6 +106,7 @@ class Dungeon:
                                 # TODO self.hero.Fight()
                                 pass
                             elif self.matrix[i][j + 1] == 'T':
+                                print('Found treasure!')
                                 self.matrix[i][j + 1] = 'H'
                                 self.matrix[i][j] = '.'
                                 hero_treasure = self.pick_treasure()
@@ -121,6 +127,7 @@ class Dungeon:
                                 # TODOself.hero.Fight()
                                 pass
                             elif self.matrix[i - 1][j] == 'T':
+                                print('Found treasure!')
                                 self.matrix[i - 1][j] = 'H'
                                 self.matrix[i][j] = '.'
                                 hero_treasure = self.pick_treasure()
@@ -137,9 +144,9 @@ class Dungeon:
                                 self.matrix[i][j] = '.'
                                 return True
                             elif self.matrix[i][j] == 'E':
-                                    # TODOself.hero.Fight()
                                 pass
                             elif self.matrix[i][j] == 'T':
+                                print('Found treasure!')
                                 self.matrix[i + 1][j] = 'H'
                                 self.matrix[i][j] = '.'
                                 hero_treasure = self.pick_treasure()

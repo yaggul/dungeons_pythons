@@ -48,3 +48,16 @@ class Hero:
 
     def learn(self, spell):
         self.spell = spell
+
+    def atack(self, by=''):
+        if by == 'weapon':
+            if self.weapon:
+                return self.weapon
+            else:
+                return 0
+        if by == 'magic':
+            if self.spell:
+                return self.spell
+            else:
+                return 0
+

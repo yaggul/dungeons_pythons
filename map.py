@@ -1,5 +1,6 @@
 from dungeon import Dungeon, h
 from hero import Hero
+from fight import Fight
 
 
 #h = Hero(name="Bron", title="Dragonslayer", health=10, mana=10, mana_regeneration_rate=2)
@@ -38,3 +39,4 @@ map.print_map()
 
 print('Healt', map.hero.get_health())
 print('Mana', map.hero.get_mana())
+map.hero_atack(by='spell')

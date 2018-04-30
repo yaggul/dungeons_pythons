@@ -1,4 +1,8 @@
 from hero import Hero
+# from enemy import enemy
+from random import choice
+
+h = Hero(name="Bron", title="Dragonslayer", health=10, mana=10, mana_regeneration_rate=2)
 
 
 class Dungeon:
@@ -9,6 +13,7 @@ class Dungeon:
         self.rows = 0
         self.cols = 0
         self.hero = None
+        self.treasure = {'mana': 10, 'health': 50}
 
     def open_file(self):
         with open(self.filename, 'r') as f:
@@ -42,9 +47,13 @@ class Dungeon:
                 if self.matrix[i][j] == 'S':
                     self.matrix[i][j] = 'H'
                     self.hero = Hero
-                    return True
-
+                    self.hero = Hero
+                    return True    
             return False
+
+    def pick_treasure(self):
+        treasure = choice(list(self.treasure))
+        return treasure
 
     def valid_position(self, row, col):
         if row < 0 or row >= self.rows or col < 0 or col >= self.cols:
@@ -56,7 +65,8 @@ class Dungeon:
         rows = len(self.matrix)
         cols = len(self.matrix[0])
 
-        hero = self.spawn
+        self.spawn(h)
+
 
         for i in range(rows):
             for j in range(cols):
@@ -71,8 +81,14 @@ class Dungeon:
                                 pass
                                 # TODOself.hero.Fight()
                             if self.matrix[i][j] == 'T':
-                                # TODOhero.Treasure
-                                pass
+                                self.matrix[i][j - 1] = 'H'
+                                self.matrix[i][j] = '.'
+                                hero_treasure = self.pick_treasure()
+                                if hero_treasure == 'health':
+                                    self.hero.healt.take_healing(self.treasure['healt'])
+                                else:
+                                    self.hero.mana += self.treasure['mana']
+
                         else:
                             return False
                     elif direction == 'right':
@@ -84,13 +100,19 @@ class Dungeon:
                             elif self.matrix[i][j] == 'E':
                                 # TODO self.hero.Fight()
                                 pass
-                            elif self.matrix[i][j] == 'T':
-                                # TODO hero.Treasure
-                                pass
+                            elif self.matrix[i][j + 1] == 'T':
+                                self.matrix[i][j + 1] = 'H'
+                                self.matrix[i][j] = '.'
+                                hero_treasure = self.pick_treasure()
+                                if hero_treasure == 'health':
+                                    self.hero.take_healing(self.treasure['health'])
+                                else:
+                                    self.hero.mana += self.treasure['mana']
+                                    print('Mana', self.hero.get_mana())
                         else:
                             return False
                     if direction == 'up':
-                        if self.valid_position(i - 1,j):
+                        if self.valid_position(i - 1, j):
                             if self.matrix[i - 1][j] is '.':
                                 self.matrix[i - 1][j] = 'H'
                                 self.matrix[i][j] = '.'
@@ -98,9 +120,14 @@ class Dungeon:
                             elif self.matrix[i][j] == 'E':
                                 # TODOself.hero.Fight()
                                 pass
-                            elif self.matrix[i][j] == 'T':
-                                # TODO hero.Treasure
-                                pass
+                            elif self.matrix[i - 1][j] == 'T':
+                                self.matrix[i - 1][j] = 'H'
+                                self.matrix[i][j] = '.'
+                                hero_treasure = self.pick_treasure()
+                                if hero_treasure == 'health':
+                                    self.hero.take_healing(self.treasure['health'])
+                                else:
+                                    self.hero.mana += self.treasure['mana']
                         else:
                             return False
                     elif direction == 'down':
@@ -113,7 +140,12 @@ class Dungeon:
                                     # TODOself.hero.Fight()
                                 pass
                             elif self.matrix[i][j] == 'T':
-                                    # TODO hero.Treasure
-                                    pass
+                                self.matrix[i + 1][j] = 'H'
+                                self.matrix[i][j] = '.'
+                                hero_treasure = self.pick_treasure()
+                                if hero_treasure == 'health':
+                                    self.hero.healt.take_healing(self.treasure['healt'])
+                                else:
+                                    self.hero.mana += self.treasure['mana']
                         else:
                             return False

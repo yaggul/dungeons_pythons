@@ -62,24 +62,16 @@ class Dungeon:
         else:
             return True
 
-<<<<<<< HEAD
-
-=======
-    def move_hero(self, direction):
->>>>>>> fc01824b7efe32b14a1ef6dd42207942d4cdb8d1
-        rows = len(self.matrix)
-        cols = len(self.matrix[0])
 
         self.spawn(h)
 
     def move_hero(self, direction):
         rows = len(self.matrix)
         cols = len(self.matrix[0])
-        
         for i in range(rows):
             for j in range(cols):
                 if self.matrix[i][j] == 'H':
-<<<<<<< HEAD
+
                     if direction == 'left':
                         if self.valid_position(i, j - 1):
                             if self.matrix[i][j - 1] is '.':
@@ -176,36 +168,3 @@ class Dungeon:
                                     self.hero.healt.take_healing(self.treasure['healt'])
                                 else:
                                     self.hero.mana += self.treasure['mana']
-=======
-                    curr_position_row = self.matrix[i]
-                    curr_position_col = self.matrix[j]
-
-                    if direction == 'up':
-                        if self.valid_position(i - 1, j):
-                            self.matrix[i - 1][j] = 'H'
-                            self.matrix[i][j] = '.'
-                            return True
-                        else:
-                            return False
-                    elif direction == 'down':
-                        if self.valid_position(i + 1, j):
-                            self.matrix[i + 1][j] = 'H'
-                            self.matrix[i][j] = '.'
-                            return True
-                        else:
-                            return False
-                    if direction == 'right':
-                        if self.valid_position(i, j + 1):
-                            self.matrix[i][j + 1] = 'H'
-                            self.matrix[i][j] = '.'
-                            return True
-                        else:
-                            return False
-                    elif direction == 'left':
-                        if self.valid_position(i, j - 1):
-                            self.matrix[i][j - 1] = 'H'
-                            self.matrix[i][j] = '.'
-                            
->>>>>>> fc01824b7efe32b14a1ef6dd42207942d4cdb8d1
-                        else:
-                            return False

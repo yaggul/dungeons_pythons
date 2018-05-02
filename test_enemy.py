@@ -2,7 +2,7 @@ import unittest
 
 from enemy import Enemy
 
-enemy = Enemy(health=80, mana=100, damage=20)
+enemy = Enemy(health=80, mana=90, damage=20)
 
 
 class TestEnemy(unittest.TestCase):
@@ -15,6 +15,9 @@ class TestEnemy(unittest.TestCase):
 
     def test_get_healt(self):
         self.assertEqual(enemy.get_health(), 80)
+
+    def test_get_mana(self):
+        self.assertEqual(enemy.get_mana(), 90)
 
 
 if __name__ == '__main__':

@@ -83,6 +83,7 @@ class Dungeon:
                                 if fight.start_fight():
                                     self.matrix[i][j - 1] = 'H'
                                     self.matrix[i][j] = '.'
+                                    print("Hero Won the fight")
                                 else:
                                     return "Game Over"
                             if self.matrix[i][j] == 'T':

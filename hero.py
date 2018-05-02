@@ -10,8 +10,8 @@ class Hero:
         self.maximum_health = self.health
         self.mana = mana
         self.mana_regeneration_rate = mana_regeneration_rate
-        self.weapon = 0
-        self.spell = 0
+        self.weapon = Weapon()
+        self.spell = Spell()
         self.damage = 0
 
     def known_as(self):

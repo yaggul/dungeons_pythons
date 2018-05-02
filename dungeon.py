@@ -68,7 +68,10 @@ class Dungeon:
 
         self.spawn(h)
 
-
+    def move_hero(self, direction):
+        rows = len(self.matrix)
+        cols = len(self.matrix[0])
+        
         for i in range(rows):
             for j in range(cols):
                 if self.matrix[i][j] == 'H':

@@ -17,15 +17,4 @@ class Fight:
             print("Enemy is dead")
         else:
             print("Hero is dead")
-        self.hero.is_alive()
-
-
-h = Hero(name="Bron", title="Dragonslayer", health=100, mana=100)
-weapon = Weapon("weapon", 200)
-h.equip(weapon)
-spell = Spell()
-h.learn(spell)
-enemy = Enemy(health=100, mana=100, damage=20)
-fight = Fight(h, enemy)
-fight.start_fight()
- 
+        return self.hero.is_alive()

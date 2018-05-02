@@ -10,8 +10,9 @@ class Hero:
         self.maximum_health = self.health
         self.mana = mana
         self.mana_regeneration_rate = mana_regeneration_rate
-        self.weapon = None
-        self.spell = None
+        self.weapon = 0
+        self.spell = 0
+        self.damage = 0
 
     def known_as(self):
         return "{} the {}".format(self.name, self.title)
@@ -32,7 +33,13 @@ class Hero:
         if self.health < damage_points:
             self.health = 0
         else:
-            self.health -= damage_points
+            self.health = self.health - damage_points
+
+    def bigger_damage(self):
+        if self.weapon.damage > self.spell.damage:
+            return self.weapon.damage
+        else:
+            return self.spell.damage
 
     def take_healing(self, healing_points):
         if not self.is_alive():

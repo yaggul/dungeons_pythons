@@ -15,9 +15,10 @@ class Fight:
             self.hero.take_damage(self.enemy.attack())
         if self.hero.is_alive():
             print("Enemy is dead")
-            self.hero.is_alive()
+            
         else:
             print("Hero is dead")
+        return self.hero.is_alive()
 
 
 h = Hero(name="Bron", title="Dragonslayer", health=100, mana=100)

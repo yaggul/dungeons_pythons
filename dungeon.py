@@ -1,6 +1,7 @@
 from hero import Hero
 from enemy import Enemy
 from random import choice
+from fight import Fight
 
 
 h = Hero(name="Bron", title="Dragonslayer", health=10, mana=10, mana_regeneration_rate=2)
@@ -81,11 +82,12 @@ class Dungeon:
                                 self.matrix[i][j - 1] = 'H'
                                 self.matrix[i][j] = '.'
                                 return True
-                            if self.matrix[i][j] == 'E':
+                            if self.matrix[i][j - 1] == 'E':
                                 fight = Fight(self.hero, enemy)
                                 if fight.start_fight():
                                     self.matrix[i][j - 1] = 'H'
                                     self.matrix[i][j] = '.'
+                                    return True
                                 else:
                                     return "Game Over"
                             if self.matrix[i][j] == 'T':
@@ -106,11 +108,12 @@ class Dungeon:
                                 self.matrix[i][j + 1] = 'H'
                                 self.matrix[i][j] = '.'
                                 return True
-                            elif self.matrix[i][j] == 'E':
+                            elif self.matrix[i][j + 1] == 'E':
                                 fight = Fight(self.hero, enemy)
                                 if fight.start_fight():
                                     self.matrix[i][j + 1] = 'H'
                                     self.matrix[i][j] = '.'
+                                    return True
                                 else:
                                     return "Game Over"
                             elif self.matrix[i][j + 1] == 'T':
@@ -131,11 +134,12 @@ class Dungeon:
                                 self.matrix[i - 1][j] = 'H'
                                 self.matrix[i][j] = '.'
                                 return True
-                            elif self.matrix[i][j] == 'E':
+                            elif self.matrix[i - 1][j] == 'E':
                                 fight = Fight(self.hero, enemy)
                                 if fight.start_fight():
                                     elf.matrix[i - 1][j] = 'H'
                                     self.matrix[i][j] = '.'
+                                    return True
                                 else:
                                     return "Game Over"
                             elif self.matrix[i - 1][j] == 'T':
@@ -155,14 +159,15 @@ class Dungeon:
                                 self.matrix[i + 1][j] = 'H'
                                 self.matrix[i][j] = '.'
                                 return True
-                            elif self.matrix[i][j] == 'E':
+                            elif self.matrix[i + 1][j] == 'E':
                                 fight = Fight(self.hero, enemy)
                                 if fight.start_fight():
                                     self.matrix[i + 1][j] = 'H'
                                     self.matrix[i][j] = '.' 
+                                    return True
                                 else:
                                     return "Game Over"
-                            elif self.matrix[i][j] == 'T':
+                            elif self.matrix[i + 1][j] == 'T':
                                 print('Found treasure!')
                                 self.matrix[i + 1][j] = 'H'
                                 self.matrix[i][j] = '.'
@@ -173,3 +178,4 @@ class Dungeon:
                                     self.hero.mana += self.treasure['mana']
                         else:
                             return False
+

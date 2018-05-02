@@ -1,7 +1,7 @@
 from hero import Hero
-# from enemy import enemy
+from enemy import Enemy
 from random import choice
-from fight import Fight
+
 
 h = Hero(name="Bron", title="Dragonslayer", health=10, mana=10, mana_regeneration_rate=2)
 
@@ -62,8 +62,6 @@ class Dungeon:
         else:
             return True
 
-    def hero_atack(by=None):
-        pass
 
     def move_hero(self, direction):
         rows = len(self.matrix)

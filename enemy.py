@@ -39,5 +39,5 @@ class Enemy:
     def attack(self):
         return self.damage
 
-    def take_damage(self, damage):
-        self.health -= damage
+    def take_damage(self, atack_damage):
+        self.health -= attack_damage

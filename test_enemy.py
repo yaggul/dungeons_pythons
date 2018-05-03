@@ -1,12 +1,14 @@
 import unittest
+import os
 
 from enemy import Enemy
-
-enemy = Enemy(health=80, mana=90, damage=20)
+print(os.listdir('/'))
 
 
 class TestEnemy(unittest.TestCase):
-
+    def setUp(self):
+        enemy = Enemy(health=80, mana=90, damage=20)
+    
     def test_enemy_is_alive(self):
         self.assertTrue(enemy.is_alive)
 
